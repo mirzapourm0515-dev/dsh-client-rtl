@@ -1,0 +1,53 @@
+{
+  "name": "dsh-client-rtl",
+  "version": "1.0.0",
+  "description": "Right-to-left (RTL) conversation layout for DeepSeek Harness — Persian, Arabic and Hebrew inside an LTR application.",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "rtl",
+    "right-to-left",
+    "persian",
+    "farsi",
+    "arabic",
+    "hebrew",
+    "i18n",
+    "client-plugin"
+  ],
+  "license": "MIT",
+  "author": "Meysam Mirzapour",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/dsh-client-rtl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/dsh-client-rtl/issues"
+  },
+  "homepage": "https://github.com/OWNER/dsh-client-rtl#readme",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "scripts": {
+    "check": "node --check client.js && node --check index.js",
+    "test": "npm run check"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

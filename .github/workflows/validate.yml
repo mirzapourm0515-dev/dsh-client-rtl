@@ -1,0 +1,37 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Syntax check (host + browser halves)
+        run: |
+          node --check index.js
+          node --check client.js
+
+      - name: Validate the client plugin manifest
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            const fail = (msg) => { console.error('FAIL: ' + msg); process.exit(1) };
+            if (!pkg.name) fail('package.json has no name');
+            if (!pkg.exports || !pkg.exports['./client']) fail('missing ./client export');
+            if (!pkg.dsh || !pkg.dsh.client) fail('missing dsh.client declaration');
+            if (pkg.dsh.client.platform !== 'web') fail('dsh.client.platform must be web');
+            const fs = require('fs');
+            for (const f of ['index.js', 'client.js']) {
+              if (!fs.existsSync(f)) fail('missing ' + f);
+            }
+            console.log('manifest ok:', pkg.name + '@' + pkg.version);
+          "
