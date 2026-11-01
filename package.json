@@ -18,12 +18,12 @@
   "author": "Meysam Mirzapour",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/dsh-client-rtl.git"
+    "url": "git+https://github.com/mirzapourm0515-dev/dsh-client-rtl.git"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/dsh-client-rtl/issues"
+    "url": "https://github.com/mirzapourm0515-dev/dsh-client-rtl/issues"
   },
-  "homepage": "https://github.com/OWNER/dsh-client-rtl#readme",
+  "homepage": "https://github.com/mirzapourm0515-dev/dsh-client-rtl#readme",
   "type": "module",
   "exports": {
     ".": "./index.js",
